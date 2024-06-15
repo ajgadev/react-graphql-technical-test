@@ -1,0 +1,193 @@
+[
+  {
+    "id": "projects/d7787cee-fcaf-4d57-83db-de25a84017e5",
+    "key": "d7787cee-fcaf-4d57-83db-de25a84017e5",
+    "name": "My Bottle",
+    "packagings": [
+      {
+        "id": "packaging:59b7d6b9-b2f3-481b-9051-fbb62b91fac1",
+        "name": "My Bottle",
+        "position": 0,
+        "packagingType": "_TYPE_BOTTLE",
+        "components": [
+          {
+            "id": "component:d6f126e3-a2bd-433e-99d2-4b4adcc69521",
+            "componentType": "_TYPE_BOTTLE",
+            "position": 0,
+            "opacity": "OPACITY_TRANSPARENT",
+            "name": "",
+            "layers": [
+              {
+                "id": "layer:420fbda0-c46c-4b94-bb33-9207631cb266",
+                "density": 1.37,
+                "position": 0,
+                "layerType": "BASE_MATERIAL",
+                "weight": 28,
+                "visibleOuterLayer": true,
+                "name": "",
+                "materialKey": "PET_A"
+              }
+            ]
+          },
+          {
+            "id": "component:26046af4-60ff-43e0-a739-16e18113009f",
+            "componentType": "_TYPE_CLOSURE",
+            "position": 1,
+            "opacity": "OPACITY_OPAQUE",
+            "name": "",
+            "layers": [
+              {
+                "id": "layer:1a222ec6-0e31-4a5f-bc0f-4c1e6a12313a",
+                "density": 0.91,
+                "position": 0,
+                "layerType": "BASE_MATERIAL",
+                "weight": 4,
+                "visibleOuterLayer": true,
+                "name": "",
+                "materialKey": "PP"
+              }
+            ]
+          },
+          {
+            "id": "component:33c3c8fa-7ce5-4f5b-beee-f0c6fe9d4c99",
+            "componentType": "_TYPE_LABEL",
+            "position": 2,
+            "name": "",
+            "layers": [
+              {
+                "id": "layer:9ba6c758-bda6-43c0-93f7-9e98d9f95dd0",
+                "density": 0.92,
+                "position": 0,
+                "layerType": "BASE_MATERIAL",
+                "weight": 2.1,
+                "visibleOuterLayer": true,
+                "name": "",
+                "materialKey": "LDPE"
+              },
+              {
+                "id": "layer:05491992-3627-436e-a79a-37c3d478228c",
+                "position": 1,
+                "layerType": "ADHESIVE",
+                "weight": 0.02,
+                "visibleOuterLayer": false,
+                "name": "",
+                "materialKey": "ADHESIVE"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "projects/ed3ba3ef-2c16-4a1d-a76a-aa6bce6d44b5",
+    "key": "ed3ba3ef-2c16-4a1d-a76a-aa6bce6d44b5",
+    "name": "My Cup",
+    "packagings": [
+      {
+        "id": "packaging:74eef7c7-406b-4e5e-a0d1-336410c7972b",
+        "name": "",
+        "position": 0,
+        "packagingType": "type__cup_with_lid",
+        "components": [
+          {
+            "id": "component:766b47c1-4c40-46f8-8b86-de1e10d8c85b",
+            "position": 0,
+            "componentType": "type__cup_with_lid",
+            "opacity": "",
+            "name": "",
+            "layers": [
+              {
+                "id": "layer:2438145c-aee8-4a1e-bf29-cbcbdececca8",
+                "density": 0.91,
+                "position": 0,
+                "weight": 12,
+                "visibleOuterLayer": true,
+                "name": "",
+                "materialKey": "PP"
+              }
+            ]
+          },
+          {
+            "id": "component:ad0d90c5-2c2a-4f60-a910-8e22dba9ceec",
+            "position": 1,
+            "componentType": "_TYPE_LID",
+            "opacity": "",
+            "name": "",
+            "layers": [
+              {
+                "id": "layer:dcc5af21-b09f-42f8-bcfb-97b8965abef7",
+                "density": 2.7,
+                "position": 0,
+                "weight": 2,
+                "visibleOuterLayer": true,
+                "name": "",
+                "materialKey": "AL"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "projects/fb13f183-4fa0-495e-86fd-bc20894e0060",
+    "key": "fb13f183-4fa0-495e-86fd-bc20894e0060",
+    "name": "My Bag",
+    "packagings": [
+      {
+        "id": "packaging:a8063e46-dc41-4ac2-9545-4373207a0c0e",
+        "name": "",
+        "position": 0,
+        "packagingType": "type_bag",
+        "components": [
+          {
+            "id": "component:f290ea9c-0dad-4120-8972-8570006e83fb",
+            "position": 0,
+            "componentType": "type_bag",
+            "opacity": "",
+            "name": "",
+            "layers": [
+              {
+                "id": "layer:209cd894-94e7-414f-8c44-eb7697fa9ccf",
+                "density": 0.92,
+                "position": 0,
+                "weight": 10,
+                "visibleOuterLayer": true,
+                "name": "",
+                "materialKey": "LDPE"
+              },
+              {
+                "id": "layer:dd869fc0-1360-4b47-9267-90948d7b1432",
+                "density": 1.2,
+                "position": 1,
+                "weight": 0.01,
+                "visibleOuterLayer": false,
+                "name": "",
+                "materialKey": "EVOH"
+              },
+              {
+                "id": "layer:51fe0a99-a80e-4d99-8bda-770e19231390",
+                "density": 2.7,
+                "position": 2,
+                "weight": 1,
+                "visibleOuterLayer": false,
+                "name": "",
+                "materialKey": "AL"
+              },
+              {
+                "id": "layer:713450cc-d565-4474-ac78-60c40901b6c5",
+                "density": 0,
+                "position": 3,
+                "weight": 0,
+                "visibleOuterLayer": false,
+                "name": "",
+                "materialKey": "ADHESIVE"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
