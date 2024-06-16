@@ -42,3 +42,23 @@ query ProjectInfo($projectId: String!) {
   }
 }
 `
+// {filter: { name: string, key: string, id: string }}
+export const PROJECTS_BY_NAME = gql`
+query ProjectsByName($filter: ProjectRequestFilter) {
+  projects(filter: $filter) {
+    id
+    key
+    name
+    packagings {
+      id
+      name
+      position
+      packagingType
+      width
+      length
+      height
+      volume
+      weight
+    }
+  }
+}`

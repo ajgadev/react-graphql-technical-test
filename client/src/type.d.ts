@@ -25,6 +25,13 @@ export type Component = {
     id: string;
     name: string;
     weight: number;
+    opacity: string;
+    position: number;
+    color?: string | null;
+    colourant?: string | null;
+    componentType?: string | null;
+    coverage?: number | null;
+    layer?: Layer[];
 }
 
 export type Layer = {

@@ -43,7 +43,7 @@ Please also provide your design thoughts and/or mockups for UI/UX for each task 
 ✅ Display all projects in a list view with some of the projects details.
 
 #### 1.2 Filter projects
-Add a filter to the list, to filter for some attributes of the project.
+✅ Add a filter to the list, to filter for some attributes of the project.
 
 ### 🏆🏆 Level 2 challenges
 
