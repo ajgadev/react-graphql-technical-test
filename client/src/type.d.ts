@@ -31,7 +31,7 @@ export type Component = {
     colourant?: string | null;
     componentType?: string | null;
     coverage?: number | null;
-    layer?: Layer[];
+    layers?: Layer[];
 }
 
 export type Layer = {
