@@ -5,14 +5,17 @@ import { ProjectResolver } from "./resolvers/ProjectResolver";
 import path from "path";
 import { ApolloServer } from "apollo-server";
 import { ProjectDatasource } from "./datasources/ProjectDatasource";
+import { applyMiddleware } from "graphql-middleware";
+import { loggingTopLevelMiddleware } from "./middlewares/LoggingMiddleware";
 
 async function main() {
   const schema = await buildSchema({
     resolvers: [ProjectResolver],
     emitSchemaFile: path.resolve(__dirname, "schema.gql"),
   });
+  const schemaWithMiddleware = applyMiddleware(schema, loggingTopLevelMiddleware);
   const server = new ApolloServer({
-    schema,
+    schema: schemaWithMiddleware,
     csrfPrevention: true,
     cache: "bounded",
     dataSources: () => {

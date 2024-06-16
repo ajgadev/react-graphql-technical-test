@@ -118,7 +118,7 @@ Create a mutation to duplicate project packaging composition elements, like dupl
 Extend the model to validate input arguments, like min/max values for number fields, etc.
 
 #### 3.2 Add a middleware to log api operations
-Create a middleware that logs all graphql operations to the terminal.
+✅ Create a middleware that logs all graphql operations to the terminal.
 
 
 ### 🏅Bonus challenges
