@@ -3,6 +3,9 @@ import { Context } from "../models/Context";
 import { Project } from "../models/Project";
 import { ProjectRequestFilter } from "../models/types/ProjectRequestFilter";
 import { UpdateProjectInput } from "../models/types/UpdateProjectInput";
+import { DuplicateComponentInput } from "../models/types/DuplicateComponentInput";
+import { DuplicatePackagingInput } from "../models/types/DuplicatePackagingInput";
+import { v4 as uuidv4 } from "uuid";
 
 @singleton()
 export class ProjectService {
@@ -35,6 +38,71 @@ export class ProjectService {
     }
     this.weightCalculation(project);
     // Save updated project
+    await context.dataSources?.projectDatasource.saveProject(project);
+
+    return project;
+  }
+
+  async duplicateComponent(input: DuplicateComponentInput, context: Context): Promise<Project> {
+    const project = await context.dataSources?.projectDatasource.findProjectById(input.projectId);
+    if (!project) {
+      throw new Error(`Project with ID ${input.projectId} not found.`);
+    }
+
+    const packaging = project.packagings?.find(p => p.id === input.packagingId);
+    if (!packaging) {
+      throw new Error(`Packaging with ID ${input.packagingId} not found.`);
+    }
+
+    const component = packaging.components?.find(c => c.id === input.componentId);
+    if (!component) {
+      throw new Error(`Component with ID ${input.componentId} not found.`);
+    }
+
+    const newComponent = {
+      ...component,
+      id: `component:${uuidv4()}`,
+      layers: component.layers?.map(layer => ({ ...layer, id: `layer:${uuidv4()}` })),
+    };
+
+    if (packaging.components) {
+      packaging.components.push(newComponent);
+    } else {
+      packaging.components = [newComponent];
+    }
+
+    await context.dataSources?.projectDatasource.saveProject(project);
+
+    return project;
+  }
+
+  async duplicatePackaging(input: DuplicatePackagingInput, context: Context): Promise<Project> {
+    const project = await context.dataSources?.projectDatasource.findProjectById(input.projectId);
+    if (!project) {
+      throw new Error(`Project with ID ${input.projectId} not found.`);
+    }
+
+    const packaging = project.packagings?.find(p => p.id === input.packagingId);
+    if (!packaging) {
+      throw new Error(`Packaging with ID ${input.packagingId} not found.`);
+    }
+
+    const newPackaging = {
+      ...packaging,
+      id: `packaging:${uuidv4()}`,
+      components: packaging.components?.map(component => ({
+        ...component,
+        id: `component:${uuidv4()}`,
+        layers: component.layers?.map(layer => ({ ...layer, id: `layer:${uuidv4()}` })),
+      })),
+    };
+
+    if (project.packagings) {
+      project.packagings.push(newPackaging);
+    } else {
+      project.packagings = [newPackaging];
+    }
+
     await context.dataSources?.projectDatasource.saveProject(project);
 
     return project;

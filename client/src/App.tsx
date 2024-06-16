@@ -12,6 +12,7 @@ const ALL_PROJECTS = gql`
       key
       # packaging {
       #   id
+      #   name
       #   weight
       #   components {
       #     id

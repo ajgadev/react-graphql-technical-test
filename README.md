@@ -111,15 +111,14 @@ Create a mutation to update single project fields, like a layers weight or mater
 
 ### 🏆🏆🏆 Level 3 challenges
 
-#### 3.3 Add mutation to copy/duplicate packagings, components and layers of projects
-Create a mutation to duplicate project packaging composition elements, like duplicate a component.
-
 #### 3.1 Add input validation for graphql inputs
 Extend the model to validate input arguments, like min/max values for number fields, etc.
 
 #### 3.2 Add a middleware to log api operations
 ✅ Create a middleware that logs all graphql operations to the terminal.
 
+#### 3.3 Add mutation to copy/duplicate packagings, components and layers of projects
+✅ Create a mutation to duplicate project packaging composition elements, like duplicate a component.
 
 ### 🏅Bonus challenges
 

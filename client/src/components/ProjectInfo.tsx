@@ -1,32 +1,8 @@
 import { useParams } from 'react-router-dom'
-import { gql, useQuery } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 import { Packaging, Project, Component } from '../type'
+import { PROJECT_INFO } from '../queryConsts'
 
-const PROJECT_INFO = gql`
-  query ProjectInfo($projectId: String!) {
-    project(id: $projectId) {
-      id
-      name
-      key
-      packagings {
-        id
-        name
-        position
-        packagingType
-        width
-        length
-        height
-        volume
-        weight
-        components {
-          id
-          name
-          weight
-        }
-      }
-    }
-  }
-`
 const ProjectInfo = () => {
     const { projectId } = useParams()
     const { loading, error, data } = useQuery(PROJECT_INFO, { variables: { projectId: `projects/${projectId}` } })

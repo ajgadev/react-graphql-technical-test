@@ -7,6 +7,8 @@ import { ProjectService } from "../services/ProjectService";
 import { ProjectRequestFilter } from "../models/types/ProjectRequestFilter";
 import { validate } from "class-validator";
 import { UpdateProjectInput } from "../models/types/UpdateProjectInput";
+import { DuplicateComponentInput } from "../models/types/DuplicateComponentInput";
+import { DuplicatePackagingInput } from "../models/types/DuplicatePackagingInput";
 
 @Resolver(Project)
 export class ProjectResolver {
@@ -44,5 +46,15 @@ export class ProjectResolver {
     // Call service method to update project
     const updatedProject = await this.projectService.updateProject(input, context);
     return updatedProject;
+  }
+
+  @Mutation(() => Project)
+  async duplicateComponent(@Arg('input') input: DuplicateComponentInput, @Ctx() context: Context): Promise<Project> {
+    return this.projectService.duplicateComponent(input, context);
+  }
+
+  @Mutation(() => Project)
+  async duplicatePackaging(@Arg('input') input: DuplicatePackagingInput, @Ctx() context: Context): Promise<Project> {
+    return this.projectService.duplicatePackaging(input, context);
   }
 }
