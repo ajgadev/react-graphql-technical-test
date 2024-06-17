@@ -81,7 +81,6 @@ export const LayerCard = ({ layer, projectId = '', packagId = '', componentId = 
         });
         if (data?.data?.updateLayer) {
             const newProject = data.data.updateLayer;
-            console.log(newProject);
             if (updateProject) updateProject(newProject);
         }
     }

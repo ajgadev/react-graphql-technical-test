@@ -13,15 +13,15 @@ export const LayerForm = ({ layer ,onSubmit, onClose }: { layer?: Layer, onSubmi
 
   useEffect(() => {
     if (layer) {
-      setFormData({
-        ...formData,
+      setFormData((prevFormData) =>  ({
+        ...prevFormData,
         density: layer.density ?? 0,
         layerType: layer.layerType ?? '',
         name: layer.name ?? '',
         materialKey: layer.materialKey ?? '',
         visibleOuterLayer: layer.visibleOuterLayer ?? false,
         weight: layer.weight ?? 0
-      });
+      }));
     }
   }, [layer]);
 
