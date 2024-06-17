@@ -48,7 +48,7 @@ Please also provide your design thoughts and/or mockups for UI/UX for each task 
 ### 🏆🏆 Level 2 challenges
 
 #### 2.1 Display single project with nested structure
-Create a project details view, showing the projects data and the packaging composition structure of the project.
+✅ Create a project details view, showing the projects data and the packaging composition structure of the project.
 
 #### 2.2 Edit projects data
 Create an editable project details view, that enables editing of projects data, like layer material selection, layer weight, etc.

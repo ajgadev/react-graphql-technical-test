@@ -4,6 +4,7 @@ import { Arg, Ctx, Mutation, Query, Resolver } from "type-graphql";
 import { Context } from "../models/Context";
 import { Project } from "../models/Project";
 import { ProjectService } from "../services/ProjectService";
+import { LayerService } from "../services/LayerService";
 import { ProjectRequestFilter } from "../models/types/ProjectRequestFilter";
 import { validate } from "class-validator";
 import { UpdateProjectInput } from "../models/types/UpdateProjectInput";
@@ -13,9 +14,11 @@ import { DuplicatePackagingInput } from "../models/types/DuplicatePackagingInput
 @Resolver(Project)
 export class ProjectResolver {
   readonly projectService: ProjectService;
+  readonly layerService: LayerService;
 
   constructor() {
     this.projectService = container.resolve(ProjectService);
+    this.layerService = container.resolve(LayerService);
   }
 
   @Query(() => Project)
@@ -57,4 +60,5 @@ export class ProjectResolver {
   async duplicatePackaging(@Arg('input') input: DuplicatePackagingInput, @Ctx() context: Context): Promise<Project> {
     return this.projectService.duplicatePackaging(input, context);
   }
+
 }

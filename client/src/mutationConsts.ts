@@ -46,30 +46,33 @@ export const MUTATION_DUPLICATE_COMPONENT = gql`
 export const MUTATION_DUPLICATE_PACKAGING = gql`
     mutation DuplicatePackaging($input: DuplicatePackagingInput!) {
         duplicatePackaging(input: $input) {
-            packagings {
             name
             id
-            components {
-                colour
-                colourant
-                componentType
-                coverage
-                id
-                layers {
-                density
-                id
-                layerType
-                materialKey
+            key
+            packagings {
                 name
-                position
-                visibleOuterLayer
-                weight
-                weightFraction
-                }
-                name
-                opacity
-                position
-                weight
+                id
+                components {
+                    colour
+                    colourant
+                    componentType
+                    coverage
+                    id
+                    layers {
+                        density
+                        id
+                        layerType
+                        materialKey
+                        name
+                        position
+                        visibleOuterLayer
+                        weight
+                        weightFraction
+                    }
+                    name
+                    opacity
+                    position
+                    weight
             }
             height
             length
@@ -78,10 +81,110 @@ export const MUTATION_DUPLICATE_PACKAGING = gql`
             volume
             weight
             width
-            }
-            name
-            id
-            key
         }
+        name
+        id
+        key
     }
+}
+`
+// {
+//     "input": {
+//       "projectId": string,
+//       "packagingId": string,
+//       "componentId": string,
+//       "layerId": string
+//     }
+//   }
+export const MUTATION_DUPLICATE_LAYER = gql`
+    mutation DuplicateLayer($input: DuplicateLayerInput!) {
+  duplicateLayer(input: $input) {
+    id
+    key
+    name
+    packagings {
+      id
+      components {
+        id
+        colour
+        colourant
+        position
+        componentType
+        coverage
+        layers {
+          id
+          density
+          position
+          layerType
+          name
+          materialKey
+          visibleOuterLayer
+          weight
+          weightFraction
+        }
+        name
+        opacity
+        weight
+      }
+      name
+      position
+      packagingType
+      width
+      length
+      height
+      volume
+      weight
+    }
+  }
+}
+`
+// {
+//     "input": {
+//       "projectId": string,
+//       "packagingId": string,
+//       "componentId": string,
+//       "layerId": string
+//     }
+//   }
+export const MUTATION_DELETE_LAYER = gql`
+    mutation ReleteLayer($input: DuplicateLayerInput!) {
+  removeLayer(input: $input) {
+    id
+    key
+    name
+    packagings {
+      id
+      components {
+        id
+        colour
+        colourant
+        position
+        componentType
+        coverage
+        layers {
+          id
+          density
+          position
+          layerType
+          name
+          materialKey
+          visibleOuterLayer
+          weight
+          weightFraction
+        }
+        name
+        opacity
+        weight
+      }
+      name
+      position
+      packagingType
+      width
+      length
+      height
+      volume
+      weight
+    }
+  }
+}
 `

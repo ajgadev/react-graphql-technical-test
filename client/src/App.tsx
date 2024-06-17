@@ -1,31 +1,12 @@
 import { useState, useEffect, useCallback } from 'react'
 import './App.css'
-import {gql, useQuery, useLazyQuery } from '@apollo/client'
+import {useQuery, useLazyQuery } from '@apollo/client'
 import { Project } from './type'
 import ProjectList from './components/ProjectList'
 import { useSearch } from './hooks/useSearch'
 import debounce from 'just-debounce-it'
 import { PROJECTS_BY_NAME } from './queryConsts'
 
-// const ALL_PROJECTS = gql`
-//   query {
-//     projects {
-//       id
-//       name
-//       key
-//       # packaging {
-//       #   id
-//       #   name
-//       #   weight
-//       #   components {
-//       #     id
-//       #     name
-//       #     weight
-//       #   }
-//       # }
-//     }
-//   }
-// `
 function App() {
   const { loading, error, data } = useQuery(PROJECTS_BY_NAME)
   const [getProjects, result] = useLazyQuery(PROJECTS_BY_NAME)

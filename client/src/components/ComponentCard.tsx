@@ -1,8 +1,7 @@
-import { Component, Layer } from "../type";
+import { Component, Layer, Project } from "../type";
 import { LayerCard } from "./LayerCard";
 
-export const ComponentCard = ({ component }: { component: Component }) => {
-    console.log(component);
+export const ComponentCard = ({ component, projectId = '', packagId = '', updateProject }: { component: Component, projectId?: string, packagId?: string, updateProject?: (project: Project) => void }) => {
     return (
         <div className='border-2 border-blue-200 rounded p-2 m-0'>
             <h2 className='text-small font-bold underline'>Name: {component.name}</h2>
@@ -20,7 +19,7 @@ export const ComponentCard = ({ component }: { component: Component }) => {
             <ul className='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3'>
                 {component.layers?.map((layer : Layer) => (
                     <li key={layer.id} className='flex flex-col'>
-                        <LayerCard layer={layer} />
+                        <LayerCard layer={layer} projectId={projectId} packagId={packagId} componentId={component.id} updateProject={updateProject} />
                     </li>
                 ))}
             </ul>

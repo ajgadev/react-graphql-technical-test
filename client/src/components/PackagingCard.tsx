@@ -1,8 +1,8 @@
-import { Packaging } from "../type";
+import { Packaging, Project } from "../type";
 import { Component } from "../type";
 import { ComponentCard } from "./ComponentCard";
 
-export const PackagingCard = ({ packaging }: { packaging: Packaging }) => {
+export const PackagingCard = ({ packaging, projectId, updateProject }: { packaging: Packaging, projectId: string, updateProject?: (project: Project) => void }) => {
   return (
     <div className='m-0 p-2'>
         <h2 className='text-xl font-bold'>{packaging.name}</h2>
@@ -22,7 +22,7 @@ export const PackagingCard = ({ packaging }: { packaging: Packaging }) => {
         <ul className='w-full p-2 gap-4 flex flex-col'>
             {packaging.components?.map((component : Component) => (
                 <li key={component.id}>
-                    <ComponentCard component={component} />
+                    <ComponentCard component={component} projectId={projectId} packagId={packaging.id} updateProject={updateProject} />
                 </li>
             ))}
         </ul>
