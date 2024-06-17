@@ -29,10 +29,11 @@ export class LayerService {
         if (!layer) {
             throw new Error(`Layer with ID ${input.layerId} not found.`);
         }
-
+        
         const newLayer = {
             ...layer,
             id: `layer:${uuidv4()}`,
+            position: component.layers?.length || 0,
         };
 
         if (component.layers) {
@@ -134,6 +135,7 @@ export class LayerService {
         const newLayer = {
             ...input.layerInfo,
             id: `layer:${uuidv4()}`,
+            position: component.layers?.length || 0
         };
 
         if (component.layers) {

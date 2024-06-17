@@ -56,6 +56,15 @@ interface LayerFormData {
     weight: number;
 }
 
+interface ComponentFormData {
+    name: string;
+    opacity: string;
+    color?: string;
+    colourant?: string;
+    componentType?: string;
+    coverage?: number;
+}
+
 export enum PackagingType {
     _TYPE_BOTTLE = "TYPE_BOTTLE",
     type__cup_with_lid = "TYPE_CUP_WITH_LID",

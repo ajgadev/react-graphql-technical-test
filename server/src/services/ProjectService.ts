@@ -5,7 +5,6 @@ import { ProjectRequestFilter } from "../models/types/ProjectRequestFilter";
 import { UpdateProjectInput } from "../models/types/UpdateProjectInput";
 import { DuplicateComponentInput } from "../models/types/DuplicateComponentInput";
 import { DuplicatePackagingInput } from "../models/types/DuplicatePackagingInput";
-import { DuplicateLayerInput } from "../models/types/DuplicateLayerInput";
 import { v4 as uuidv4 } from "uuid";
 
 @singleton()
@@ -60,6 +59,7 @@ export class ProjectService {
       ...component,
       id: `component:${uuidv4()}`,
       layers: component.layers?.map(layer => ({ ...layer, id: `layer:${uuidv4()}` })),
+      position: packaging.components?.length || 0
     };
 
     if (packaging.components) {
@@ -92,6 +92,7 @@ export class ProjectService {
         id: `component:${uuidv4()}`,
         layers: component.layers?.map(layer => ({ ...layer, id: `layer:${uuidv4()}` })),
       })),
+      position: project.packagings?.length || 0,
     };
 
     if (project.packagings) {
