@@ -4,7 +4,7 @@ import { Context } from "../models/Context";
 import { Project } from "../models/Project";
 import { PackagingComponent } from "../models/PackagingComponent";
 import { ComponentService } from "../services/ComponentService";
-import { DuplicateComponentInput } from "../models/types/DuplicateComponentInput";
+import { DuplicateComponentInput } from "../models/types/component/DuplicateComponentInput";
 
 @Resolver(PackagingComponent)
 export class ComponentResolver {

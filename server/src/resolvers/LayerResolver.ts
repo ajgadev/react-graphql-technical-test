@@ -5,9 +5,9 @@ import { Context } from "../models/Context";
 import { Project } from "../models/Project";
 import { ComponentLayer } from "../models/ComponentLayer";
 import { LayerService } from "../services/LayerService";
-import { DuplicateLayerInput } from "../models/types/DuplicateLayerInput";
-import { UpdateLayerInput } from "../models/types/UpdateLayerInput";
-import { CreateLayerInput } from "../models/types/CreateLayerInput";
+import { DuplicateLayerInput } from "../models/types/layer/DuplicateLayerInput";
+import { UpdateLayerInput } from "../models/types/layer/UpdateLayerInput";
+import { CreateLayerInput } from "../models/types/layer/CreateLayerInput";
 
 @Resolver(ComponentLayer)
 export class LayerResolver {

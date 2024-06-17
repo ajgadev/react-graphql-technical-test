@@ -3,7 +3,7 @@ import { Context } from "../models/Context";
 import { Project } from "../models/Project";
 import { ProjectRequestFilter } from "../models/types/ProjectRequestFilter";
 import { UpdateProjectInput } from "../models/types/UpdateProjectInput";
-import { DuplicateComponentInput } from "../models/types/DuplicateComponentInput";
+import { DuplicateComponentInput } from "../models/types/component/DuplicateComponentInput";
 import { DuplicatePackagingInput } from "../models/types/DuplicatePackagingInput";
 import { v4 as uuidv4 } from "uuid";
 

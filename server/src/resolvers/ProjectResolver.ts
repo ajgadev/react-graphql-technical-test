@@ -7,7 +7,7 @@ import { ProjectService } from "../services/ProjectService";
 import { ProjectRequestFilter } from "../models/types/ProjectRequestFilter";
 import { validate } from "class-validator";
 import { UpdateProjectInput } from "../models/types/UpdateProjectInput";
-import { DuplicateComponentInput } from "../models/types/DuplicateComponentInput";
+import { DuplicateComponentInput } from "../models/types/component/DuplicateComponentInput";
 import { DuplicatePackagingInput } from "../models/types/DuplicatePackagingInput";
 
 @Resolver(Project)

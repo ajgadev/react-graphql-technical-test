@@ -27,7 +27,7 @@ export type Component = {
     weight: number;
     opacity: string;
     position: number;
-    color?: string | null;
+    colour?: string | null;
     colourant?: string | null;
     componentType?: string | null;
     coverage?: number | null;
@@ -59,7 +59,7 @@ interface LayerFormData {
 interface ComponentFormData {
     name: string;
     opacity: string;
-    color?: string;
+    colour?: string;
     colourant?: string;
     componentType?: string;
     coverage?: number;

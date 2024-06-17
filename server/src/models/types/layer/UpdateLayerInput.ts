@@ -1,6 +1,6 @@
 import { Field, InputType, Float } from 'type-graphql';
 import { IsString } from 'class-validator';
-import { ModifyableLayerInput } from './ModifyableLayerInput';
+import { ModifyableLayerInput } from '../layer/ModifyableLayerInput';
 
 @InputType()
 export class UpdateLayerInput {

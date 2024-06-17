@@ -1,11 +1,11 @@
 import { singleton } from "tsyringe";
 import { Context } from "../models/Context";
 import { Project } from "../models/Project";
-import { DuplicateLayerInput } from "../models/types/DuplicateLayerInput";
-import { UpdateLayerInput } from "../models/types/UpdateLayerInput";
+import { DuplicateLayerInput } from "../models/types/layer/DuplicateLayerInput";
+import { UpdateLayerInput } from "../models/types/layer/UpdateLayerInput";
 import { v4 as uuidv4 } from "uuid";
 import { ProjectService } from "./ProjectService";
-import { CreateLayerInput } from "../models/types/CreateLayerInput";
+import { CreateLayerInput } from "../models/types/layer/CreateLayerInput";
 
 @singleton()
 export class LayerService {

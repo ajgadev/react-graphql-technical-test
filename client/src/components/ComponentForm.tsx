@@ -4,7 +4,7 @@ export const ComponentForm = ({ component, onSubmit, onClose }: { component?: Co
     const [formData, setFormData] = useState<ComponentFormData>({
         name: component?.name ?? '',
         opacity: component?.opacity ?? '',
-        color: component?.color ?? '',
+        colour: component?.colour ?? '',
         colourant: component?.colourant ?? '',
         componentType: component?.componentType ?? '',
         coverage: component?.coverage ?? 0
@@ -58,9 +58,9 @@ export const ComponentForm = ({ component, onSubmit, onClose }: { component?: Co
                 <strong className="w-[30%] overflow-hidden text-ellipsis text-nowrap">Color: </strong>
                 <input
                     className="w-[70%] rounded border-2 border-gray-200 p-1"
-                    name="color"
+                    name="colour"
                     type="text"
-                    value={formData.color}
+                    value={formData.colour}
                     onChange={handleChange}
                 />
             </label>
