@@ -10,7 +10,7 @@ import { LayerForm } from "./LayerForm";
 
 export const LayerCard = ({ layer, projectId = '', packagId = '', componentId = '', updateProject }: { layer: Layer, projectId?: string, packagId?: string, componentId?: string, updateProject?: (project: Project) => void }) => {
     const [isEditing, setIsEditing] = useState(false);
-    const truncatedWeightFraction = layer.weightFraction.toFixed(4);
+    const truncatedWeightFraction = layer.weightFraction?.toFixed(4) || 0;
     const canBeEdited = projectId && packagId && componentId;
     const [editLayer] = useMutation(MUTATION_UPDATE_LAYER);
     const [deleteLayer] = useMutation(MUTATION_DELETE_LAYER, {

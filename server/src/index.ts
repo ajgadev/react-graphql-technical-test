@@ -3,6 +3,7 @@ import "reflect-metadata";
 import { buildSchema } from "type-graphql";
 import { ProjectResolver } from "./resolvers/ProjectResolver";
 import { LayerResolver } from "./resolvers/LayerResolver";
+import { ComponentResolver } from "./resolvers/ComponentResolver";
 import path from "path";
 import { ApolloServer } from "apollo-server";
 import { ProjectDatasource } from "./datasources/ProjectDatasource";
@@ -11,7 +12,7 @@ import { loggingTopLevelMiddleware } from "./middlewares/LoggingMiddleware";
 
 async function main() {
   const schema = await buildSchema({
-    resolvers: [ProjectResolver, LayerResolver],
+    resolvers: [ProjectResolver, LayerResolver, ComponentResolver],
     emitSchemaFile: path.resolve(__dirname, "schema.gql"),
   });
   const schemaWithMiddleware = applyMiddleware(schema, loggingTopLevelMiddleware);

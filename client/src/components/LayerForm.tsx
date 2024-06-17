@@ -1,29 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Layer, LayerFormData } from "../type";
 
 export const LayerForm = ({ layer ,onSubmit, onClose }: { layer?: Layer, onSubmit: (data: LayerFormData) => void, onClose: () => void }) => {   
   const [formData, setFormData] = useState<LayerFormData>({
-    density: 0,
-    layerType: "",
-    name: "",
-    materialKey: "",
-    visibleOuterLayer: false,
-    weight: 0
+    density: layer?.density ?? 0,
+    layerType: layer?.layerType ?? '',
+    name: layer?.name ?? '',
+    materialKey: layer?.materialKey ?? '',
+    visibleOuterLayer: layer?.visibleOuterLayer ?? false,
+    weight: layer?.weight ?? 0
   });
-
-  useEffect(() => {
-    if (layer) {
-      setFormData((prevFormData) =>  ({
-        ...prevFormData,
-        density: layer.density ?? 0,
-        layerType: layer.layerType ?? '',
-        name: layer.name ?? '',
-        materialKey: layer.materialKey ?? '',
-        visibleOuterLayer: layer.visibleOuterLayer ?? false,
-        weight: layer.weight ?? 0
-      }));
-    }
-  }, [layer]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
