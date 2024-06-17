@@ -2,6 +2,9 @@ import { Layer, Project } from "../type";
 import { MUTATION_DUPLICATE_LAYER, MUTATION_DELETE_LAYER } from "../mutationConsts";
 // import { PROJECT_INFO } from '../queryConsts'
 import { useMutation } from "@apollo/client";
+import { EditPencil } from "../icons/edit_pencil";
+import { Copy } from "../icons/copy";
+import { Trash } from "../icons/trash";
 
 export const LayerCard = ({ layer, projectId = '', packagId = '', componentId = '', updateProject }: { layer: Layer, projectId?: string, packagId?: string, componentId?: string, updateProject?: (project: Project) => void }) => {
     const truncatedWeightFraction = layer.weightFraction.toFixed(4);
@@ -63,15 +66,15 @@ export const LayerCard = ({ layer, projectId = '', packagId = '', componentId = 
             <span><strong>Layer type:</strong> {layer.layerType}</span>
             <span><strong>Visible outerlayer:</strong> {layer.visibleOuterLayer ? 'Yes' : 'No'}</span>
             {canBeEdited && (
-                <div className='flex gap-2 mt-4'>
+                <div className='flex gap-2 mt-4 justify-center'>
                     <button onClick={handleDuplicate} className='text-blue-300 border-2 border-blue-200 hover:border-transparent hover:bg-blue-700 hover:text-white font-bold py-2 px-4 rounded'>
-                        Duplicate
+                        <Copy />
                     </button>
                     <button className='text-green-300 border-2 border-green-200 hover:border-transparent hover:bg-green-700 hover:text-white font-bold py-2 px-4 rounded'>
-                        Edit
+                        <EditPencil />
                     </button>
                     <button onClick={handleDelete} className='text-red-300 border-2 border-red-200 hover:border-transparent hover:bg-red-700 hover:text-white font-bold py-2 px-4 rounded'>
-                        Delete
+                        <Trash />
                     </button>
                 </div>
             )}

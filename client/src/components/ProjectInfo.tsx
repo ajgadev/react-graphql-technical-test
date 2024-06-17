@@ -1,9 +1,10 @@
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 import { Packaging, Project } from '../type'
 import { PROJECT_INFO } from '../queryConsts'
 import { PackagingCard } from './PackagingCard'
 import { useCallback, useEffect, useState } from 'react'
+import { ArrowBack } from '../icons/arrow_back'
 
 const ProjectInfo = () => {
     const { projectId } = useParams()
@@ -23,6 +24,9 @@ const ProjectInfo = () => {
     if (error) return <span className='error'>{error.message}</span>
     return (
         <div>
+            <Link to='/' className='text-blue-300 hover:text-blue-400 font-bold float-left'>
+                <ArrowBack />
+            </Link>
             {loading && <p>Loading...</p>}
             {project && (
                 <div className='p-4'>  

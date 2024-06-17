@@ -1,16 +1,9 @@
 
-# Hello
-
-And welcome to the Recyda Coding Challenge repository. This repository a basic representation of the Recyda application and is designed as playground to fulfill several coding tasks.
-
-
 # How to run the code
 
-1. Open a terminal and clone the repository. Change directory `cd recyda-coding-challenge`
+1. Install all dependencies by executing `npm install`
 
-2. Install all dependencies by executing `npm install`
-
-3. Run the application by executing `npm run start`
+2. Run the application by executing `npm run start`
 
 You will see the following message in the terminal when the application has been started:
 ```
@@ -59,6 +52,8 @@ Create an editable project details view, that enables editing of projects data, 
 #### 3.1 Edit project structure
 Create an editable project details view, that enables editing of the projects packaging composition, like adding and removing components, layers, etc.
 
+##### 3.1.1 Duplicate and delete Layers
+✅  Add duplicate and delete buttons to the layer list.
 
 ### 🏅 Bonus Tasks
 
