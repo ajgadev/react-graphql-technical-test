@@ -1,4 +1,3 @@
-// src/middlewares/LoggingMiddleware.ts
 import { IMiddlewareFunction } from 'graphql-middleware';
 import { GraphQLResolveInfo } from 'graphql';
 

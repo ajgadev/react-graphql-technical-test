@@ -6,6 +6,8 @@ import { Project } from "../models/Project";
 import { ComponentLayer } from "../models/ComponentLayer";
 import { LayerService } from "../services/LayerService";
 import { DuplicateLayerInput } from "../models/types/DuplicateLayerInput";
+import { UpdateLayerInput } from "../models/types/UpdateLayerInput";
+import { CreateLayerInput } from "../models/types/CreateLayerInput";
 
 @Resolver(ComponentLayer)
 export class LayerResolver {
@@ -24,4 +26,15 @@ export class LayerResolver {
     async removeLayer(@Arg('input') input: DuplicateLayerInput, @Ctx() context: Context): Promise<Project> {
         return this.layerService.removeLayer(input, context);
     }
+
+    @Mutation(() => Project)
+    async updateLayer(@Arg('input') input: UpdateLayerInput, @Ctx() context: Context): Promise<Project> {
+        return this.layerService.updateLayer(input, context);
+    }
+
+    @Mutation(() => Project)
+    async addLayer(@Arg('input') input: CreateLayerInput, @Ctx() context: Context): Promise<Project> {
+        return this.layerService.createLayer(input, context);
+    }
+
 }

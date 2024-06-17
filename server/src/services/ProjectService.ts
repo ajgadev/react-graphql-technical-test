@@ -11,21 +11,17 @@ import { v4 as uuidv4 } from "uuid";
 @singleton()
 export class ProjectService {
   async getProject(id: string, context: Context): Promise<Project | undefined> {
-    const project = await context.dataSources?.projectDatasource.findProjectById(id);
+    let project = await context.dataSources?.projectDatasource.findProjectById(id);
     if (project) {
-      this.weightCalculation(project);
+      project = ProjectService.transformProject(project);
     }
     return project;
   }
 
   async getProjects(filter: ProjectRequestFilter = {}, context: Context): Promise<Project[]> {
     const projects = await context.dataSources?.projectDatasource.findProjects(filter);
-    if (projects) {
-      projects.forEach(project => {
-        this.weightCalculation(project);
-      });
-    }
-    return projects || [];
+    const formattedProjects = projects?.map(project => ProjectService.transformProject(project));
+    return formattedProjects || [];
   }
 
   async updateProject(input: UpdateProjectInput, context: Context): Promise<Project> {
@@ -37,45 +33,8 @@ export class ProjectService {
     if (input.name !== undefined) {
       project.name = input.name;
     }
-    this.weightCalculation(project);
+    ProjectService.weightCalculation(project);
     // Save updated project
-    await context.dataSources?.projectDatasource.saveProject(project);
-
-    return project;
-  }
-
-  async duplicateLayer(input: DuplicateLayerInput, context: Context): Promise<Project> {
-    const project = await context.dataSources?.projectDatasource.findProjectById(input.projectId);
-    if (!project) {
-      throw new Error(`Project with ID ${input.projectId} not found.`);
-    }
-
-    const packaging = project.packagings?.find(p => p.id === input.packagingId);
-    if (!packaging) {
-      throw new Error(`Packaging with ID ${input.packagingId} not found.`);
-    }
-
-    const component = packaging.components?.find(c => c.id === input.componentId);
-    if (!component) {
-      throw new Error(`Component with ID ${input.componentId} not found.`);
-    }
-
-    const layer = component.layers?.find(l => l.id === input.layerId);
-    if (!layer) {
-      throw new Error(`Layer with ID ${input.layerId} not found.`);
-    }
-
-    const newLayer = {
-      ...layer,
-      id: `layer:${uuidv4()}`,
-    };
-
-    if (component.layers) {
-      component.layers.push(newLayer);
-    } else {
-      component.layers = [newLayer];
-    }
-
     await context.dataSources?.projectDatasource.saveProject(project);
 
     return project;
@@ -146,12 +105,12 @@ export class ProjectService {
     return project;
   }
 
-  private weightCalculation(project: Project): void {
+  private static weightCalculation(project: Project): void {
     this.calculateProjectWeights(project);
     this.calculateWeightFractions(project);
   }
 
-  private calculateProjectWeights(project: Project): void {
+  private static calculateProjectWeights(project: Project): void {
     project.packagings?.forEach(packaging => {
       packaging.components?.forEach(component => {
         component.weight = component.layers?.reduce((sum, layer) => sum + (layer.weight || 0), 0) || 0;
@@ -160,7 +119,7 @@ export class ProjectService {
     });
   }
 
-  private calculateWeightFractions(project: Project): void {
+  private static calculateWeightFractions(project: Project): void {
     project.packagings?.forEach(packaging => {
       const totalPackagingWeight = packaging.weight || 1;
       packaging.components?.forEach(component => {
@@ -169,5 +128,33 @@ export class ProjectService {
         });
       });
     });
+  }
+
+  static transformProject(project: Project): Project {
+    if (!project) return project;
+    const newProject = {
+      ...project,
+      packagings: project.packagings?.map(packaging => {
+        const newPackaging = {
+          ...packaging,
+          components: packaging.components?.map(component => {
+            const newComponent = {
+              ...component,
+              layers: component.layers?.map(layer => {
+                const newLayer = {
+                  ...layer,
+                  // weightFraction: layer.weightFraction || 0,
+                };
+                return newLayer;
+              })
+            };
+            return newComponent;
+          })
+        };
+        return newPackaging;
+      })
+    };
+    this.weightCalculation(newProject);
+    return newProject;
   }
 }
