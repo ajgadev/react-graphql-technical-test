@@ -54,6 +54,15 @@ export const ComponentForm = ({ component, onSubmit, onClose }: { component?: Co
                 </select>
             </label>
 
+            <label title="Component type" className="flex gap-1 justify-center items-center">
+                <strong className="w-[30%] overflow-hidden text-ellipsis text-nowrap">Component type: </strong>
+                <select className="w-[70%] rounded border-2 border-gray-200 p-1" name="componentType" value={formData.componentType} onChange={handleChange}>
+                    <option value=""></option>
+                    <option value="COMPONENT_TYPE_COMPONENT">Component</option>
+                    <option value="COMPONENT_TYPE_PACKAGING">Packaging</option>
+                </select>
+            </label>
+
             <label title="Color" className="flex gap-1 justify-center items-center">
                 <strong className="w-[30%] overflow-hidden text-ellipsis text-nowrap">Color: </strong>
                 <input
@@ -72,6 +81,17 @@ export const ComponentForm = ({ component, onSubmit, onClose }: { component?: Co
                     name="colourant"
                     type="text"
                     value={formData.colourant}
+                    onChange={handleChange}
+                />
+            </label>
+
+            <label title="Coverage" className="flex gap-1 justify-center items-center">
+                <strong className="w-[30%] overflow-hidden text-ellipsis text-nowrap">Coverage: </strong>
+                <input
+                    className="w-[70%] rounded border-2 border-gray-200 p-1"
+                    name="coverage"
+                    type="number"
+                    value={formData.coverage}
                     onChange={handleChange}
                 />
             </label>
