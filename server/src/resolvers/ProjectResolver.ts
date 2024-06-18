@@ -7,8 +7,6 @@ import { ProjectService } from "../services/ProjectService";
 import { ProjectRequestFilter } from "../models/types/ProjectRequestFilter";
 import { validate } from "class-validator";
 import { UpdateProjectInput } from "../models/types/UpdateProjectInput";
-import { DuplicateComponentInput } from "../models/types/component/DuplicateComponentInput";
-import { DuplicatePackagingInput } from "../models/types/DuplicatePackagingInput";
 
 @Resolver(Project)
 export class ProjectResolver {
@@ -38,19 +36,14 @@ export class ProjectResolver {
     // Validate input using class-validator
     const errors = await validate(input);
     if (errors.length > 0) {
-      // Throw error with validation errors
-      errors.forEach(e => console.log(e.constraints));
-      throw new Error(`Validation error`);
-      // throw new Error(`Validation error: ${errors.map(e => Object.values(e.constraints)).join(', ')}`);
+      // Log validation errors
+      const errorMessages = errors
+        .map(error => Object.values(error.constraints ?? {}).join(', '))
+        .join(', ');
+      throw new GraphQLError(`Validation error: ${errorMessages}`);
     }
     // Call service method to update project
     const updatedProject = await this.projectService.updateProject(input, context);
     return updatedProject;
   }
-
-  @Mutation(() => Project)
-  async duplicatePackaging(@Arg('input') input: DuplicatePackagingInput, @Ctx() context: Context): Promise<Project> {
-    return this.projectService.duplicatePackaging(input, context);
-  }
-
 }

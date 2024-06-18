@@ -65,6 +65,15 @@ interface ComponentFormData {
     coverage?: number;
 }
 
+interface PackagingFormData {
+    name?: string;
+    packagingType:? string;
+    width?: number;
+    length?: number;
+    height?: number;
+    volume?: number;
+}
+
 export enum PackagingType {
     _TYPE_BOTTLE = "TYPE_BOTTLE",
     type__cup_with_lid = "TYPE_CUP_WITH_LID",

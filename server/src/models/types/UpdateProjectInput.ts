@@ -1,4 +1,4 @@
-import { InputType, Field, ID, Float } from "type-graphql";
+import { InputType, Field, ID } from "type-graphql";
 import { IsNotEmpty, IsOptional, IsString } from "class-validator";
 
 @InputType()

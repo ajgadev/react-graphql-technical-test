@@ -4,7 +4,7 @@ import { Project } from "../models/Project";
 import { ProjectRequestFilter } from "../models/types/ProjectRequestFilter";
 import { UpdateProjectInput } from "../models/types/UpdateProjectInput";
 import { DuplicateComponentInput } from "../models/types/component/DuplicateComponentInput";
-import { DuplicatePackagingInput } from "../models/types/DuplicatePackagingInput";
+import { DuplicatePackagingInput } from "../models/types/packaging/DuplicatePackagingInput";
 import { v4 as uuidv4 } from "uuid";
 
 @singleton()
@@ -34,39 +34,6 @@ export class ProjectService {
     }
     ProjectService.weightCalculation(project);
     // Save updated project
-    await context.dataSources?.projectDatasource.saveProject(project);
-
-    return project;
-  }
-
-  async duplicatePackaging(input: DuplicatePackagingInput, context: Context): Promise<Project> {
-    const project = await context.dataSources?.projectDatasource.findProjectById(input.projectId);
-    if (!project) {
-      throw new Error(`Project with ID ${input.projectId} not found.`);
-    }
-
-    const packaging = project.packagings?.find(p => p.id === input.packagingId);
-    if (!packaging) {
-      throw new Error(`Packaging with ID ${input.packagingId} not found.`);
-    }
-
-    const newPackaging = {
-      ...packaging,
-      id: `packaging:${uuidv4()}`,
-      components: packaging.components?.map(component => ({
-        ...component,
-        id: `component:${uuidv4()}`,
-        layers: component.layers?.map(layer => ({ ...layer, id: `layer:${uuidv4()}` })),
-      })),
-      position: project.packagings?.length || 0,
-    };
-
-    if (project.packagings) {
-      project.packagings.push(newPackaging);
-    } else {
-      project.packagings = [newPackaging];
-    }
-
     await context.dataSources?.projectDatasource.saveProject(project);
 
     return project;

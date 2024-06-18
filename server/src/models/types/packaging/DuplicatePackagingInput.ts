@@ -1,9 +1,10 @@
 import { Field, InputType } from 'type-graphql';
-import { IsString } from 'class-validator';
+import { IsString, IsNotEmpty } from 'class-validator';
 
 @InputType()
 export class DuplicatePackagingInput {
   @Field()
+  @IsNotEmpty()
   @IsString()
   projectId!: string;
 

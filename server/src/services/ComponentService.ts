@@ -38,9 +38,11 @@ export class ComponentService {
             packaging.components = [newComponent];
         }
 
-        await context.dataSources?.projectDatasource.saveProject(project);
+        const newProject = ProjectService.transformProject(project);
 
-        return project;
+        await context.dataSources?.projectDatasource.saveProject(newProject);
+
+        return newProject;
     }
 
     async removeComponent(input: DuplicateComponentInput, context: Context): Promise<Project> {
@@ -80,12 +82,24 @@ export class ComponentService {
         }
 
         // TODO: Verify that the data is correct (?)
-        component.name = input.componentInfo.name ?? '';
-        component.componentType = input.componentInfo.componentType ?? '';
-        component.colour = input.componentInfo.colour ?? '';
-        component.colourant = input.componentInfo.colourant ?? '';
-        component.opacity = input.componentInfo.opacity ?? '';
-        component.coverage = input.componentInfo.coverage ?? 0;
+        if (input.componentInfo.name !== undefined) {
+          component.name = input.componentInfo.name;
+        }
+        if (input.componentInfo.componentType !== undefined) {
+          component.componentType = input.componentInfo.componentType;
+        }
+        if (input.componentInfo.colour !== undefined) {
+          component.colour = input.componentInfo.colour;
+        }
+        if (input.componentInfo.colourant !== undefined) {
+          component.colourant = input.componentInfo.colourant;
+        }
+        if (input.componentInfo.opacity !== undefined) {
+          component.opacity = input.componentInfo.opacity;
+        }
+        if (input.componentInfo.coverage !== undefined) {
+          component.coverage = input.componentInfo.coverage;
+        }
 
         const newProject = ProjectService.transformProject(project);
         

@@ -101,12 +101,24 @@ export class LayerService {
         }
 
         // TODO: Verify that the data is correct (?)
-        layer.name = input.layerInfo.name ?? '';
-        layer.layerType = input.layerInfo.layerType ?? '';
-        layer.materialKey = input.layerInfo.materialKey ?? '';
-        layer.visibleOuterLayer = input.layerInfo.visibleOuterLayer ?? false;
-        layer.density = input.layerInfo.density ?? 0;
-        layer.weight = input.layerInfo.weight ?? 0;
+        if (input.layerInfo.name !== undefined) {
+          layer.name = input.layerInfo.name;
+        }
+        if (input.layerInfo.layerType !== undefined) {
+          layer.layerType = input.layerInfo.layerType;
+        }
+        if (input.layerInfo.materialKey !== undefined) {
+          layer.materialKey = input.layerInfo.materialKey;
+        }
+        if (input.layerInfo.visibleOuterLayer !== undefined) {
+          layer.visibleOuterLayer = input.layerInfo.visibleOuterLayer;
+        }
+        if (input.layerInfo.density !== undefined) {
+          layer.density = input.layerInfo.density;
+        }
+        if (input.layerInfo.weight !== undefined) {
+          layer.weight = input.layerInfo.weight;
+        }
 
         const newProject = ProjectService.transformProject(project);
         

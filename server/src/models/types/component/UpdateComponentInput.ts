@@ -1,4 +1,4 @@
-import { Field, InputType, Float } from 'type-graphql';
+import { Field, InputType } from 'type-graphql';
 import { IsString } from 'class-validator';
 import { ModifyableComponentInput } from './ModifyableComponentInput';
 
