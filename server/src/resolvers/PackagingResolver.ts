@@ -21,11 +21,11 @@ export class PackagingResolver {
     async duplicatePackaging(@Arg('input') input: DuplicatePackagingInput, @Ctx() context: Context): Promise<Project> {
         const errors = await validate(input);
         if (errors.length > 0) {
-        // Log validation errors
-        const errorMessages = errors
-            .map(error => Object.values(error.constraints ?? {}).join(', '))
-            .join(', ');
-        throw new GraphQLError(`Validation error: ${errorMessages}`);
+            // Log validation errors
+            const errorMessages = errors
+                .map(error => Object.values(error.constraints ?? {}).join(', '))
+                .join(', ');
+            throw new GraphQLError(`Validation error: ${errorMessages}`);
         }
         return this.packagingService.duplicatePackaging(input, context);
     }
@@ -34,11 +34,11 @@ export class PackagingResolver {
     async updatePackaging(@Arg('input') input: UpdatePackagingInput, @Ctx() context: Context): Promise<Project> {
         const errors = await validate(input);
         if (errors.length > 0) {
-        // Log validation errors
-        const errorMessages = errors
-            .map(error => Object.values(error.constraints ?? {}).join(', '))
-            .join(', ');
-        throw new GraphQLError(`Validation error: ${errorMessages}`);
+            // Log validation errors
+            const errorMessages = errors
+                .map(error => Object.values(error.constraints ?? {}).join(', '))
+                .join(', ');
+            throw new GraphQLError(`Validation error: ${errorMessages}`);
         }
         return this.packagingService.updatePackaging(input, context);
     }
@@ -47,11 +47,11 @@ export class PackagingResolver {
     async removePackaging(@Arg('input') input: DuplicatePackagingInput, @Ctx() context: Context): Promise<Project> {
         const errors = await validate(input);
         if (errors.length > 0) {
-        // Log validation errors
-        const errorMessages = errors
-            .map(error => Object.values(error.constraints ?? {}).join(', '))
-            .join(', ');
-        throw new GraphQLError(`Validation error: ${errorMessages}`);
+            // Log validation errors
+            const errorMessages = errors
+                .map(error => Object.values(error.constraints ?? {}).join(', '))
+                .join(', ');
+            throw new GraphQLError(`Validation error: ${errorMessages}`);
         }
         return this.packagingService.removePackaging(input, context);
     }
@@ -60,11 +60,11 @@ export class PackagingResolver {
     async createPackaging(@Arg('input') input: CreatePackagingInput, @Ctx() context: Context): Promise<Project> {
         const errors = await validate(input);
         if (errors.length > 0) {
-        // Log validation errors
-        const errorMessages = errors
-            .map(error => Object.values(error.constraints ?? {}).join(', '))
-            .join(', ');
-        throw new GraphQLError(`Validation error: ${errorMessages}`);
+            // Log validation errors
+            const errorMessages = errors
+                .map(error => Object.values(error.constraints ?? {}).join(', '))
+                .join(', ');
+            throw new GraphQLError(`Validation error: ${errorMessages}`);
         }
         return this.packagingService.createPackaging(input, context);
     }

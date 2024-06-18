@@ -7,6 +7,8 @@ import { ComponentService } from "../services/ComponentService";
 import { DuplicateComponentInput } from "../models/types/component/DuplicateComponentInput";
 import { UpdateComponentInput } from "../models/types/component/UpdateComponentInput";
 import { CreateComponentInput } from "../models/types/component/CreateComponentInput";
+import { GraphQLError } from "graphql";
+import { validate } from "class-validator";
 
 @Resolver(PackagingComponent)
 export class ComponentResolver {
@@ -28,11 +30,27 @@ export class ComponentResolver {
 
     @Mutation(() => Project)
     async addComponent(@Arg('input') input: CreateComponentInput, @Ctx() context: Context): Promise<Project> {
+        const errors = await validate(input);
+        if (errors.length > 0) {
+            // Log validation errors
+            const errorMessages = errors
+                .map(error => Object.values(error.constraints ?? {}).join(', '))
+                .join(', ');
+            throw new GraphQLError(`Validation error: ${errorMessages}`);
+        }
         return this.componentService.createComponent(input, context);
     }
 
     @Mutation(() => Project)
     async updateComponent(@Arg('input') input: UpdateComponentInput, @Ctx() context: Context): Promise<Project> {
+        const errors = await validate(input);
+        if (errors.length > 0) {
+            // Log validation errors
+            const errorMessages = errors
+                .map(error => Object.values(error.constraints ?? {}).join(', '))
+                .join(', ');
+            throw new GraphQLError(`Validation error: ${errorMessages}`);
+        }
         return this.componentService.updateComponent(input, context);
     }
 }
