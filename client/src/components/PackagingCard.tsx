@@ -119,7 +119,7 @@ export const PackagingCard = ({ packaging, projectId, updateProject }: { packagi
                     <div className='flex flex-col'>
                         <span><strong>Weight:</strong> {packaging.weight} g</span>
                         <span><strong>Height:</strong> {packaging.height} cm</span>
-                        <span><strong>Volume:</strong> {packaging.volume} cm</span>
+                        <span><strong>Volume:</strong> {packaging.volume} ml</span>
                     </div>
                 </div>
                 <h3 className='flex items-start font-bold mt-4 px-2'>

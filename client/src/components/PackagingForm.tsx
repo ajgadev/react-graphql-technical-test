@@ -1,5 +1,8 @@
 import { Packaging, PackagingFormData } from "../type";
+import { PackagingType } from "../type.enum";
 import { useState } from "react";
+
+const packagingTypeOptions = Object.keys(PackagingType);
 
 export const PackagingForm = ({ packaging, onSubmit, onClose }: { packaging?: Packaging, onSubmit: (packaging: PackagingFormData) => void, onClose: () => void }) => {
     const [packagingData, setPackagingData] = useState<PackagingFormData>({
@@ -47,13 +50,12 @@ export const PackagingForm = ({ packaging, onSubmit, onClose }: { packaging?: Pa
 
             <label title="Packaging Type" className="flex gap-1 justify-center items-center">
                 <strong className="w-[30%] overflow-hidden text-ellipsis text-nowrap">Packaging Type: </strong>
-                <input
-                    className="w-[70%] rounded border-2 border-gray-200 p-1"
-                    name="packagingType"
-                    type="text"
-                    value={packagingData?.packagingType ?? ''}
-                    onChange={handleChange}
-                />
+                <select className="w-[70%] rounded border-2 border-gray-200 p-1" name="packagingType" value={packagingData?.packagingType ?? ''} onChange={handleChange}>
+                    <option value=""></option>
+                    {packagingTypeOptions.map((type) => (
+                        <option key={type} value={type}>{PackagingType[type as keyof typeof PackagingType]}</option>
+                    ))}
+                </select>
             </label>
 
             <label title="Width" className="flex gap-1 justify-center items-center">
