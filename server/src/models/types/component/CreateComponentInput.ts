@@ -1,6 +1,7 @@
-import { Field, InputType, Float } from 'type-graphql';
-import { IsString } from 'class-validator';
+import { Field, InputType } from 'type-graphql';
+import { IsString, ValidateNested } from 'class-validator';
 import { ModifyableComponentInput } from './ModifyableComponentInput';
+import { Type } from 'class-transformer';
 
 @InputType()
 export class CreateComponentInput {
@@ -13,5 +14,7 @@ export class CreateComponentInput {
   packagingId!: string;
   
   @Field(() => ModifyableComponentInput)
+  @ValidateNested()
+  @Type(() => ModifyableComponentInput)
   componentInfo!: ModifyableComponentInput;
 }

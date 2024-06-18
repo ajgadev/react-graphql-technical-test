@@ -1,6 +1,7 @@
-import { Field, InputType, Float } from 'type-graphql';
-import { IsString } from 'class-validator';
+import { Field, InputType } from 'type-graphql';
+import { IsString, ValidateNested } from 'class-validator';
 import { ModifyableLayerInput } from '../layer/ModifyableLayerInput';
+import { Type } from 'class-transformer';
 
 @InputType()
 export class UpdateLayerInput {
@@ -21,5 +22,7 @@ export class UpdateLayerInput {
   layerId!: string;
   
   @Field(() => ModifyableLayerInput)
+  @ValidateNested()
+  @Type(() => ModifyableLayerInput)
   layerInfo!: ModifyableLayerInput;
 }

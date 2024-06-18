@@ -1,6 +1,7 @@
 import { Field, InputType } from 'type-graphql';
-import { IsString } from 'class-validator';
+import { IsString, ValidateNested } from 'class-validator';
 import { ModifyableComponentInput } from './ModifyableComponentInput';
+import { Type } from 'class-transformer';
 
 @InputType()
 export class UpdateComponentInput {
@@ -17,5 +18,7 @@ export class UpdateComponentInput {
   componentId!: string;
   
   @Field(() => ModifyableComponentInput)
+  @ValidateNested()
+  @Type(() => ModifyableComponentInput)
   componentInfo!: ModifyableComponentInput;
 }

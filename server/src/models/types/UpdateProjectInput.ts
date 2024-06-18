@@ -11,14 +11,4 @@ export class UpdateProjectInput {
   @IsOptional()
   @IsString()
   name?: string;
-
-  @Field({ nullable: true })
-  @IsOptional()
-  @IsString()
-  layerWeight?: number;
-
-  @Field({ nullable: true })
-  @IsOptional()
-  @IsString()
-  layerMaterial?: string;
 }
