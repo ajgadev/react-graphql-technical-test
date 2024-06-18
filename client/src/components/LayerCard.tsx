@@ -1,5 +1,5 @@
 import { Layer, Project, LayerFormData } from "../type";
-import { MUTATION_DUPLICATE_LAYER, MUTATION_DELETE_LAYER, MUTATION_UPDATE_LAYER } from "../mutationConsts";
+import { MUTATION_DUPLICATE_LAYER, MUTATION_DELETE_LAYER, MUTATION_UPDATE_LAYER } from "../graphql/mutationConsts";
 // import { PROJECT_INFO } from '../queryConsts'
 import { useMutation } from "@apollo/client";
 import { EditPencil } from "../icons/edit_pencil";

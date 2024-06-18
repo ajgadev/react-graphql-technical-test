@@ -5,7 +5,7 @@ import { Project } from './type'
 import ProjectList from './components/ProjectList'
 import { useSearch } from './hooks/useSearch'
 import debounce from 'just-debounce-it'
-import { PROJECTS_BY_NAME } from './queryConsts'
+import { PROJECTS_BY_NAME } from './graphql/queryConsts'
 
 function App() {
   const { loading, error, data } = useQuery(PROJECTS_BY_NAME)

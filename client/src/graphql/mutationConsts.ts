@@ -1,51 +1,5 @@
 import {gql} from '@apollo/client'
 
-// $input: { packagingId: string, projectId: string }
-export const MUTATION_DUPLICATE_PACKAGING = gql`
-    mutation DuplicatePackaging($input: DuplicatePackagingInput!) {
-        duplicatePackaging(input: $input) {
-            name
-            id
-            key
-            packagings {
-                name
-                id
-                components {
-                    colour
-                    colourant
-                    componentType
-                    coverage
-                    id
-                    layers {
-                        density
-                        id
-                        layerType
-                        materialKey
-                        name
-                        position
-                        visibleOuterLayer
-                        weight
-                        weightFraction
-                    }
-                    name
-                    opacity
-                    position
-                    weight
-            }
-            height
-            length
-            packagingType
-            position
-            volume
-            weight
-            width
-        }
-        name
-        id
-        key
-    }
-}
-`
 // {
 //     "input": {
 //       "projectId": string,

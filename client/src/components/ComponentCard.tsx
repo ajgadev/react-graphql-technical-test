@@ -4,7 +4,7 @@ import { LayerCard } from "./LayerCard";
 import { useState } from "react";
 import { LayerForm } from "./LayerForm";
 import { useMutation } from "@apollo/client";
-import { MUTATION_CREATE_LAYER } from "../mutationConsts";
+import { MUTATION_CREATE_LAYER } from "../graphql/mutationConsts";
 import { Copy } from "../icons/copy";
 import { Trash } from "../icons/trash";
 import { EditPencil } from "../icons/edit_pencil";
@@ -100,7 +100,7 @@ export const ComponentCard = ({ component, projectId = '', packagId = '', update
             : (
                 <>
                     <div className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
-                        <h2 className='text-small font-bold underline'>Name: {component.name}</h2>
+                        <h2 className='text-small font-bold'>Name: {component.name}</h2>
                         {canBeEdited && (
                             <div className='flex gap-2 justify-end'>
                                 <button onClick={handleDuplicate} className='text-sm text-blue-300 border-blue-200 hover:border-transparent hover:bg-blue-700 hover:text-white py-1 px-2 rounded'>
