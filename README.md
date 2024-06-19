@@ -107,7 +107,7 @@ Create a mutation to update single project fields, like a layers weight or mater
 ### 🏆🏆🏆 Level 3 challenges
 
 #### 3.1 Add input validation for graphql inputs
-Extend the model to validate input arguments, like min/max values for number fields, etc.
+✅ Extend the model to validate input arguments, like min/max values for number fields, etc.
 
 #### 3.2 Add a middleware to log api operations
 ✅ Create a middleware that logs all graphql operations to the terminal.
@@ -119,3 +119,13 @@ Extend the model to validate input arguments, like min/max values for number fie
 
 #### Graph documentation
 Provide descriptons/documentation on the graph model and operations. Use the existing tooling provided by the framework. 
+
+### Improvements
+- Handle errors in the frontend
+- search for refetchQueries on the client side.
+- missing mutation to delete and create a project. Also mutation to update project fields missing.
+
+### Notes
+- Was the correct approach to split the project mutation into separate mutations?
+- used class-validator to validate the input arguments
+- used graphql-middleware to log the graphql operations, maybe there is a better way to format the log
